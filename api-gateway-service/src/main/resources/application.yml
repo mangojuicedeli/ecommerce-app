@@ -13,6 +13,12 @@ spring:
     name: api-gateway-service
   cloud:
     gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring cloud gateway global filter
+            preLogger: true
+            postLogger: true
       routes:
         - id: first-service
           uri: http://localhost:8081
@@ -29,10 +35,9 @@ spring:
           filters:
 #            - AddRequestHeader=second-request, second-request-header2
 #            - AddResponseHeader=second-response, second-response-header2
-            - CustomFilter
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage: Spring cloud gateway global filter
-            preLogger: true
-            postLogger: true
+            - name: CustomFilter
+            - name: LoggingFilter
+              args:
+                baseMessage: logging filter
+                preLogger: true
+                postLogger: true
