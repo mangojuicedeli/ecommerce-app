@@ -23,12 +23,12 @@ public class UserController {
     private final Greeting greeting;
     private final UserService userService;
 
-    @GetMapping("/welcome")
+    @GetMapping("/user-service/welcome")
     public String welcome() {
         return greeting.getMessage();
     }
 
-    @GetMapping("/health_check")
+    @GetMapping("/user-service/health_check")
     public String status() {
         return String.format("It's working in user-service on port %s.",
                 environment.getProperty("local.server.port"));
