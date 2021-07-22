@@ -12,6 +12,10 @@ public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     UserEntity convertDtoToEntity(UserDto userDto);
+
+    UserDto convertEntityToDto(UserEntity userEntity);
     UserDto convertReqToDto(RequestUser requestUser);
+
     ResponseUser convertDtoToRes(UserDto userDto);
+    ResponseUser convertEntityToRes(UserEntity v);
 }
