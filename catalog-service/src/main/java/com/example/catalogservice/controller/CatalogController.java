@@ -1,6 +1,7 @@
 package com.example.catalogservice.controller;
 
 import com.example.catalogservice.jpa.CatalogEntity;
+import com.example.catalogservice.mapper.CatalogMapper;
 import com.example.catalogservice.service.CatalogService;
 import com.example.catalogservice.vo.ResponseCatalog;
 import lombok.RequiredArgsConstructor;
@@ -28,10 +29,13 @@ public class CatalogController {
     }
 
     @GetMapping("/catalogs")
-    public ResponseEntity<List<ResponseCatalog>> getUsers() {
-        Iterable<CatalogEntity> catalogList = catalogService.getAllCatalogs();
-
+    public ResponseEntity<List<ResponseCatalog>> getCatalogs() {
         List<ResponseCatalog> result = new ArrayList<>();
+
+        Iterable<CatalogEntity> catalogList = catalogService.getAllCatalogs();
+        catalogList.forEach(entity -> {
+            result.add(CatalogMapper.INSTANCE.convertEntityToResponse(entity));
+        });
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }

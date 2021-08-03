@@ -2,27 +2,50 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway-service" />
-        <module name="catalog-service" />
         <module name="first-service" />
-        <module name="user-service" />
         <module name="order-service" />
-        <module name="second-service" />
         <module name="discovery-service" />
+        <module name="second-service" />
+      </profile>
+      <profile name="Annotation profile for catalog-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
+        </processorPath>
+        <module name="catalog-service" />
+        <module name="user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-gateway-service" target="1.5" />
-      <module name="catalog-service" target="1.5" />
-      <module name="discovery-service" target="1.5" />
-      <module name="first-service" target="1.5" />
-      <module name="order-service" target="1.5" />
-      <module name="second-service" target="1.5" />
-      <module name="user-service" target="1.5" />
+      <module name="api-gateway-service" target="11" />
+      <module name="catalog-service" target="11" />
+      <module name="discovery-service" target="11" />
+      <module name="first-service" target="11" />
+      <module name="order-service" target="11" />
+      <module name="second-service" target="11" />
+      <module name="user-service" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway-service" options="-parameters" />
+      <module name="catalog-service" options="-parameters" />
+      <module name="discovery-service" options="-parameters" />
+      <module name="first-service" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="second-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+    </option>
   </component>
 </project>
